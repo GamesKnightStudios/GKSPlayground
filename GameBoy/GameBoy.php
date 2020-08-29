@@ -133,14 +133,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				btnStart.addEventListener('mousedown', function(event) {gameKeyDown("startaction")}, false);
 				btnSelect.addEventListener('mousedown', function(event) {gameKeyDown("selectaction")}, false);
 
-				btnUp.addEventListener('touchstart', function(event) {gameKeyDown("upaction")}, false);
-				btnDown.addEventListener('touchstart', function(event) {gameKeyDown("downaction")}, false);
-				btnLeft.addEventListener('touchstart', function(event) {gameKeyDown("leftaction")}, false);
-				btnRight.addEventListener('touchstart', function(event) {gameKeyDown("rightaction")}, false);
-				btnA.addEventListener('touchstart', function(event) {gameKeyDown("aaction")}, false);
-				btnB.addEventListener('touchstart', function(event) {gameKeyDown("baction")}, false);
-				btnStart.addEventListener('touchstart', function(event) {gameKeyDown("startaction")}, false);
-				btnSelect.addEventListener('touchstart', function(event) {gameKeyDown("selectaction")}, false);
+				btnUp.addEventListener('touchstart', function(event) {gameKeyDown("upaction");event.preventDefault();}, false);
+				btnDown.addEventListener('touchstart', function(event) {gameKeyDown("downaction");event.preventDefault();}, false);
+				btnLeft.addEventListener('touchstart', function(event) {gameKeyDown("leftaction");event.preventDefault();}, false);
+				btnRight.addEventListener('touchstart', function(event) {gameKeyDown("rightaction");event.preventDefault();}, false);
+				btnA.addEventListener('touchstart', function(event) {gameKeyDown("aaction");event.preventDefault();}, false);
+				btnB.addEventListener('touchstart', function(event) {gameKeyDown("baction");event.preventDefault();}, false);
+				btnStart.addEventListener('touchstart', function(event) {gameKeyDown("startaction");event.preventDefault();}, false);
+				btnSelect.addEventListener('touchstart', function(event) {gameKeyDown("selectaction");event.preventDefault();}, false);
 				
 				btnUp.addEventListener('mouseup', function(event) {gameKeyUp("upaction")}, false);
 				btnDown.addEventListener('mouseup', function(event) {gameKeyUp("downaction")}, false);
