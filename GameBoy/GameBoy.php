@@ -83,7 +83,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item">&#160;</div>
+						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
