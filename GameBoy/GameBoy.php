@@ -88,8 +88,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnStart" class="long"><a id="txtStart">Start</a></button></div>
 						<div class="controls-grid-item"><button id="btnSelect" class="long"><a id="txtSelect">Select</a></button></div>
+						<div class="controls-grid-item"><button id="btnStart" class="long"><a id="txtStart">Start</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 					</div>
