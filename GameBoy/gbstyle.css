@@ -20,6 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 @import "http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic,600,600italic";
 
+html {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
 body{
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 	font-size: 14px;
