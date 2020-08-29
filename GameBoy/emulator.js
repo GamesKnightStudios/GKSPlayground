@@ -221,6 +221,6 @@ function deleteCartridgeRam(){
    }
 }
 
-window.onload = getROMlist;
+//window.onload = getROMlist;
 window.onkeydown = keyPress;
 window.onkeyup = keyRelease;

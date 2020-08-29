@@ -30,13 +30,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<meta name="description" content="" />
 		<meta name="author" content="GamesKnightStudios" />
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link rel="stylesheet" href="gbstyle.css" />
 		
 		<script src="Z80.js"></script>
 		<script src="GameBoy.js"></script>
 		<script src="emulator.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -62,24 +63,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				<div class="box controls">
 					<div class="controls-grid-container">
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("upaction")' onmouseup='gameKeyUp("upaction")'>&uarr;</button></div>
+						<div class="controls-grid-item"><button id="btnUp" class="square">&uarr;</button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("leftaction")' onmouseup='gameKeyUp("leftaction")'>&larr;</button></div>
+						<div class="controls-grid-item"><button id="btnLeft" class="square">&larr;</button></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("rightaction")' onmouseup='gameKeyUp("rightaction")'>&rarr;</button></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("aaction")' onmouseup='gameKeyUp("aaction")'>A</button></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("downaction")' onmouseup='gameKeyUp("downaction")'>&darr;</button></div>
+						<div class="controls-grid-item"><button id="btnRight" class="square">&rarr;</button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("baction")' onmouseup='gameKeyUp("baction")'>B</button></div>
+						<div class="controls-grid-item"><button id="btnA" class="square">A</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnDown" class="square">&darr;</button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnB" class="square">B</button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
@@ -87,8 +86,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button class="long" onmousedown='gameKeyDown("startaction")' onmouseup='gameKeyUp("startaction")'>Start</button></div>
-						<div class="controls-grid-item"><button class="long" onmousedown='gameKeyDown("selectaction")' onmouseup='gameKeyUp("selectaction")'>Select</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnStart" class="long">Start</button></div>
+						<div class="controls-grid-item"><button id="btnSelect" class="long">Select</button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 					</div>
@@ -96,47 +97,106 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					
 				</div>
 				<script>
+				var btnUp = document.getElementById("btnUp");
+				var btnDown = document.getElementById("btnDown");
+				var btnLeft = document.getElementById("btnLeft");
+				var btnRight = document.getElementById("btnRight");
+				var btnA = document.getElementById("btnA");
+				var btnB = document.getElementById("btnB");
+				var btnStart = document.getElementById("btnStart");
+				var btnSelect = document.getElementById("btnSelect");
+				
+				btnUp.addEventListener('mousedown', function(event) {gameKeyDown("upaction")}, false);
+				btnDown.addEventListener('mousedown', function(event) {gameKeyDown("downaction")}, false);
+				btnLeft.addEventListener('mousedown', function(event) {gameKeyDown("leftaction")}, false);
+				btnRight.addEventListener('mousedown', function(event) {gameKeyDown("rightaction")}, false);
+				btnA.addEventListener('mousedown', function(event) {gameKeyDown("aaction")}, false);
+				btnB.addEventListener('mousedown', function(event) {gameKeyDown("baction")}, false);
+				btnStart.addEventListener('mousedown', function(event) {gameKeyDown("startaction")}, false);
+				btnSelect.addEventListener('mousedown', function(event) {gameKeyDown("selectaction")}, false);
+
+				btnUp.addEventListener('touchstart', function(event) {gameKeyDown("upaction")}, false);
+				btnDown.addEventListener('touchstart', function(event) {gameKeyDown("downaction")}, false);
+				btnLeft.addEventListener('touchstart', function(event) {gameKeyDown("leftaction")}, false);
+				btnRight.addEventListener('touchstart', function(event) {gameKeyDown("rightaction")}, false);
+				btnA.addEventListener('touchstart', function(event) {gameKeyDown("aaction")}, false);
+				btnB.addEventListener('touchstart', function(event) {gameKeyDown("baction")}, false);
+				btnStart.addEventListener('touchstart', function(event) {gameKeyDown("startaction")}, false);
+				btnSelect.addEventListener('touchstart', function(event) {gameKeyDown("selectaction")}, false);
+				
+				btnUp.addEventListener('mouseup', function(event) {gameKeyUp("upaction")}, false);
+				btnDown.addEventListener('mouseup', function(event) {gameKeyUp("downaction")}, false);
+				btnLeft.addEventListener('mouseup', function(event) {gameKeyUp("leftaction")}, false);
+				btnRight.addEventListener('mouseup', function(event) {gameKeyUp("rightaction")}, false);
+				btnA.addEventListener('mouseup', function(event) {gameKeyUp("aaction")}, false);
+				btnB.addEventListener('mouseup', function(event) {gameKeyUp("baction")}, false);
+				btnStart.addEventListener('mouseup', function(event) {gameKeyUp("startaction")}, false);
+				btnSelect.addEventListener('mouseup', function(event) {gameKeyUp("selectaction")}, false);
+
+				btnUp.addEventListener('touchend', function(event) {gameKeyUp("upaction")}, false);
+				btnDown.addEventListener('touchend', function(event) {gameKeyUp("downaction")}, false);
+				btnLeft.addEventListener('touchend', function(event) {gameKeyUp("leftaction")}, false);
+				btnRight.addEventListener('touchend', function(event) {gameKeyUp("rightaction")}, false);
+				btnA.addEventListener('touchend', function(event) {gameKeyUp("aaction")}, false);
+				btnB.addEventListener('touchend', function(event) {gameKeyUp("baction")}, false);
+				btnStart.addEventListener('touchend', function(event) {gameKeyUp("startaction")}, false);
+				btnSelect.addEventListener('touchend', function(event) {gameKeyUp("selectaction")}, false);
+
 				function gameKeyDown(action) {
-					document.getElementById(action).style.color = "red";
-					if(action == "leftaction"){ // Left
-						gb.keyPressed(2);
-					}else if(action == "upaction"){ // Up
-						gb.keyPressed(4);
-					}else if(action == "rightaction"){ // Right
-						gb.keyPressed(1);
-					}else if(action == "downaction"){ // Down
-						gb.keyPressed(8);
-					}else if(action == "baction"){ // B
-						gb.keyPressed(32);
-					}else if(action == "aaction"){ // A
-						gb.keyPressed(16);
-					}else if(action == "startaction"){ // Start
-						gb.keyPressed(128);
-					}else if(action == "selectaction"){ // Select
-						gb.keyPressed(64);
+					//console.log(action);
+					el = document.getElementById(action);
+					if (el != null){
+						el.style.color = "red";
+						if(action == "leftaction"){ // Left
+							gb.keyPressed(2);
+						}else if(action == "upaction"){ // Up
+							gb.keyPressed(4);
+						}else if(action == "rightaction"){ // Right
+							gb.keyPressed(1);
+						}else if(action == "downaction"){ // Down
+							gb.keyPressed(8);
+						}else if(action == "baction"){ // B
+							gb.keyPressed(32);
+						}else if(action == "aaction"){ // A
+							gb.keyPressed(16);
+						}else if(action == "startaction"){ // Start
+							gb.keyPressed(128);
+						}else if(action == "selectaction"){ // Select
+							gb.keyPressed(64);
+						}
 					}
 				}
 
 				function gameKeyUp(action) {
-					document.getElementById(action).style.color = "black";
-					if(action == "leftaction"){ // Left
-						gb.keyReleased(2);
-					}else if(action == "upaction"){ // Up
-						gb.keyReleased(4);
-					}else if(action == "rightaction"){ // Right
-						gb.keyReleased(1);
-					}else if(action == "downaction"){ // Down
-						gb.keyReleased(8);
-					}else if(action == "baction"){ // B
-						gb.keyReleased(32);
-					}else if(action == "aaction"){ // A
-						gb.keyReleased(16);
-					}else if(action == "startaction"){ // Start
-						gb.keyReleased(128);
-					}else if(action == "selectaction"){ // Select
-						gb.keyReleased(64);
+					//console.log(action);
+					el = document.getElementById(action);
+					if (el != null){
+						el.style.color = "black";
+						if(action == "leftaction"){ // Left
+							gb.keyReleased(2);
+						}else if(action == "upaction"){ // Up
+							gb.keyReleased(4);
+						}else if(action == "rightaction"){ // Right
+							gb.keyReleased(1);
+						}else if(action == "downaction"){ // Down
+							gb.keyReleased(8);
+						}else if(action == "baction"){ // B
+							gb.keyReleased(32);
+						}else if(action == "aaction"){ // A
+							gb.keyReleased(16);
+						}else if(action == "startaction"){ // Start
+							gb.keyReleased(128);
+						}else if(action == "selectaction"){ // Select
+							gb.keyReleased(64);
+						}
 					}
 				}
+				
+				
+				//btnUp.addEventListener("mousedown", gameKeyDown("upaction"));
+				//btnUp.addEventListener("mouseup", gameKeyUp("upaction"));
+				//btnUp.addEventListener("touchstart", gameKeyDown("upaction"));
+				
 				</script>
 				<div class="copyright">
 					<a>Emulator based on</a>
