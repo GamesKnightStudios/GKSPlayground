@@ -22,10 +22,18 @@ var GameBoy = function(rom){
    
    var _this = this;
    
+   /*
+   //GREY COLOR PALETTE
    this.COLOR0 = (255 << 24) | (255 << 16) | (255 << 8) | 255;
    this.COLOR1 = (255 << 24) | (204 << 16) | (204 << 8) | 204;
    this.COLOR2 = (255 << 24) | (153 << 16) | (153 << 8) | 153;
    this.COLOR3 = (255 << 24) | (0 << 16) | (0 << 8) | 0;
+   */
+   //GREEN COLOR PALETTE
+   this.COLOR0 = (255 << 24) | (208 << 16) | (248 << 8) | 244;
+   this.COLOR1 = (255 << 24) | (112 << 16) | (192 << 8) | 136;
+   this.COLOR2 = (255 << 24) | (86 << 16) | (104 << 8) | 52;
+   this.COLOR3 = (255 << 24) | (32 << 16) | (24 << 8) | 8;
    
    this.displaycanvas = null;
    this.onFPS = null;
