@@ -63,24 +63,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				<div class="box controls">
 					<div class="controls-grid-container">
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnUp" class="square">&uarr;</button></div>
+						<div class="controls-grid-item"><button id="btnUp" class="square"><a id="txtUp">&uarr;</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnLeft" class="square">&larr;</button></div>
+						<div class="controls-grid-item"><button id="btnLeft" class="square"><a id="txtLeft">&larr;</a></button></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnRight" class="square">&rarr;</button></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnA" class="square">A</button></div>
-						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnDown" class="square">&darr;</button></div>
+						<div class="controls-grid-item"><button id="btnRight" class="square"><a id="txtRight">&rarr;</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnB" class="square">B</button></div>
+						<div class="controls-grid-item"><button id="btnA" class="square"><a id="txtA">A</a></button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnDown" class="square"><a id="txtDown">&darr;</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnB" class="square"><a id="txtB">B</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
@@ -88,8 +86,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
-						<div class="controls-grid-item"><button id="btnStart" class="long">Start</button></div>
-						<div class="controls-grid-item"><button id="btnSelect" class="long">Select</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button id="btnStart" class="long"><a id="txtStart">Start</a></button></div>
+						<div class="controls-grid-item"><button id="btnSelect" class="long"><a id="txtSelect">Select</a></button></div>
 						<div class="controls-grid-item"></div>
 						<div class="controls-grid-item"></div>
 					</div>
@@ -105,6 +105,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				var btnB = document.getElementById("btnB");
 				var btnStart = document.getElementById("btnStart");
 				var btnSelect = document.getElementById("btnSelect");
+
+				var txtUp = document.getElementById("txtUp");
+				var txtDown = document.getElementById("txtDown");
+				var txtLeft = document.getElementById("txtLeft");
+				var txtRight = document.getElementById("txtRight");
+				var txtA = document.getElementById("txtA");
+				var txtB = document.getElementById("txtB");
+				var txtStart = document.getElementById("txtStart");
+				var txtSelect = document.getElementById("txtSelect");
+
+				txtUp.disabled = true;
+				txtDown.disabled = true;
+				txtLeft.disabled = true;
+				txtRight.disabled = true;
+				txtA.disabled = true;
+				txtB.disabled = true;
+				txtStart.disabled = true;
+				txtSelect.disabled = true;
 				
 				btnUp.addEventListener('mousedown', function(event) {gameKeyDown("upaction")}, false);
 				btnDown.addEventListener('mousedown', function(event) {gameKeyDown("downaction")}, false);
