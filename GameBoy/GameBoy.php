@@ -32,10 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="stylesheet" href="gbstyle.css" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		
 		<script src="Z80.js"></script>
 		<script src="GameBoy.js"></script>
@@ -63,26 +60,88 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					<div id="fps"></div>
 				</div>
 				<div class="box controls">
-					<table>
-						<tr>
-							<td>Q</td><td>Select</td>
-							<td>W</td><td>Start</td>
-							<td>A</td><td>B</td>
-							<td>S</td><td>A</td>
-						</tr>
-						<tr>
-							<td>&uarr;</td><td>Up</td>
-							<td>&darr;</td><td>Down</td>
-							<td>&larr;</td><td>Left</td>
-							<td>&rarr;</td><td>Right</td>
-						</tr>
-					</table>
+					<div class="controls-grid-container">
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("upaction")' onmouseup='gameKeyUp("upaction")'>&uarr;</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("leftaction")' onmouseup='gameKeyUp("leftaction")'>&larr;</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("rightaction")' onmouseup='gameKeyUp("rightaction")'>&rarr;</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("aaction")' onmouseup='gameKeyUp("aaction")'>A</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("downaction")' onmouseup='gameKeyUp("downaction")'>&darr;</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="square" onmousedown='gameKeyDown("baction")' onmouseup='gameKeyUp("baction")'>B</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item">&#160;</div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"><button class="long" onmousedown='gameKeyDown("startaction")' onmouseup='gameKeyUp("startaction")'>Start</button></div>
+						<div class="controls-grid-item"><button class="long" onmousedown='gameKeyDown("selectaction")' onmouseup='gameKeyUp("selectaction")'>Select</button></div>
+						<div class="controls-grid-item"></div>
+						<div class="controls-grid-item"></div>
+					</div>
+
+					
 				</div>
+				<script>
+				function gameKeyDown(action) {
+					document.getElementById(action).style.color = "red";
+					if(action == "leftaction"){ // Left
+						gb.keyPressed(2);
+					}else if(action == "upaction"){ // Up
+						gb.keyPressed(4);
+					}else if(action == "rightaction"){ // Right
+						gb.keyPressed(1);
+					}else if(action == "downaction"){ // Down
+						gb.keyPressed(8);
+					}else if(action == "baction"){ // B
+						gb.keyPressed(32);
+					}else if(action == "aaction"){ // A
+						gb.keyPressed(16);
+					}else if(action == "startaction"){ // Start
+						gb.keyPressed(128);
+					}else if(action == "selectaction"){ // Select
+						gb.keyPressed(64);
+					}
+				}
+
+				function gameKeyUp(action) {
+					document.getElementById(action).style.color = "black";
+					if(action == "leftaction"){ // Left
+						gb.keyReleased(2);
+					}else if(action == "upaction"){ // Up
+						gb.keyReleased(4);
+					}else if(action == "rightaction"){ // Right
+						gb.keyReleased(1);
+					}else if(action == "downaction"){ // Down
+						gb.keyReleased(8);
+					}else if(action == "baction"){ // B
+						gb.keyReleased(32);
+					}else if(action == "aaction"){ // A
+						gb.keyReleased(16);
+					}else if(action == "startaction"){ // Start
+						gb.keyReleased(128);
+					}else if(action == "selectaction"){ // Select
+						gb.keyReleased(64);
+					}
+				}
+				</script>
 				<div class="copyright">
-					<a href="http://www.alexaladren.net">Alejandro Aladr&eacute;n</a> |
-					<a href="mailto:alex@alexaladren.net">alex@alexaladren.net</a> | 
-					<a href="http://www.gnu.org/licenses/">GPL v.3</a> |
-					<a href="https://github.com/GamesKnightStudio/GKSPlayground">GitHub</a>
+					<a>Emulator based on</a>
+					<a href="https://github.com/alexaladren/jsgameboy"> jsgameboy</a>
+					<a>by Alex Aladren</a>
 				</div>
 				
 			</div>
@@ -102,6 +161,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					<div id="cartridge"></div>
 					<input type="button" id="save" value="Guardar" onclick="saveCartridgeRam()" style="display: none;" />
 					<input type="button" id="delete" value="Eliminar partida" onclick="deleteCartridgeRam()" style="display: none;" />
+				</div>
+				
+				<div class="box controls">
+					<table>
+						<tr>
+							<td>Q</td><td id="selectaction">Select</td>
+							<td>W</td><td id="startaction">Start</td>
+						</tr>
+						<tr>
+							<td>A</td><td id="baction">B</td>
+							<td>S</td><td id="aaction">A</td>
+						</tr>
+						<tr>
+							<td>&uarr;</td><td id="upaction">Up</td>
+							<td>&darr;</td><td id="downaction">Down</td>
+						</tr>
+						<tr>
+							<td>&larr;</td><td id="leftaction">Left</td>
+							<td>&rarr;</td><td id="rightaction">Right</td>
+						</tr>
+					</table>
 				</div>
 				
 			</div>

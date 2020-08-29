@@ -103,6 +103,7 @@ h1{
 .box.controls table{
 	width: 100%;
 }
+
 .box.controls table td:nth-child(2n+1){
 	margin: 3px 3px 3px 8px;
 	padding: 1px 5px;
@@ -116,7 +117,37 @@ h1{
 .box.controls table td:nth-child(2n){
 	font-size: 10px;
 	text-align: left;
+	color: black;
 	text-transform: uppercase;
+}
+
+.controls-grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+	width: 100%;
+	background: #89c452;
+}
+
+.controls-grid-item {
+	background: #89c452;
+	text-align: center;
+	border-radius: 8px;
+}
+.square{
+	background: #232b23;
+	color: grey;
+	height:40px;
+	   width:40px;
+	text-align: center;
+	border-radius: 8px;
+}
+.long{
+	background: #232b23;
+	color: grey;
+	height:25px;
+	   width:60px;
+	text-align: center;
+	border-radius: 8px;
 }
 
 .copyright{
