@@ -221,6 +221,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					<a href="https://github.com/alexaladren/jsgameboy"> jsgameboy</a>
 					<a>by Alex Aladren</a>
 				</div>
+
+				<!-- Footer section starts here -->
+				<footer id="Footer">
+					<div class="container text-center">
+						<div class="footer-text ">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+							<div class="copyright">
+								<p>© Games Knight Studios 2020 | Last update: 23:00 30/08/2020</p>
+							</div>
+							</div>
+						</div>
+					</div>
+				</footer>
 				
 			</div>
 			<div class="right-column">

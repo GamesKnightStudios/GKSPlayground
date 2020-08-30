@@ -44,6 +44,13 @@ ul, li {
 #Header .menu {
 	cursor: pointer;
 }
+#logo-text {
+	white-space: nowrap;
+    overflow: hidden;
+}
+#logo-text a {
+	color: #000;
+}
 #nav-icon1 {
   width: 35px;
   height: 25px;
@@ -146,8 +153,12 @@ body.menu-active #Header .logo {
 	height: 630px;
 	position: relative;
 }
+#section-header{
+	text-align: left;
+}
 #Games {
-	padding: 45px 0;
+	padding-top: 100px;
+	padding-bottom: 20px;
 }
 #Games .title {
 	width: 70%;
@@ -207,6 +218,7 @@ body.menu-active #Header .logo {
 }
 #Games .each-icon .icon-text h3 {
 	color: rgb(52,104,86);
+	padding-top: 15px;
 	margin: 0 0 15px;
 	font: 700 20px/115% 'Open Sans', sans-serif;
 }
@@ -244,6 +256,110 @@ body.menu-active #Header .logo {
 	transition: all 0.5s;
 }
 #Games .each-icon:hover .icon-text {
+	visibility: visible;
+	opacity: 1;
+	transition: all 0.5s;
+}
+#Blog {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+#Blog .title {
+	width: 70%;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+#Blog .title h3 {
+	font: 500 26px/115% 'Open Sans', sans-serif;
+	color: #333;
+	margin: 0 0 30px;
+}
+#Blog .title p {
+	font: 400 16px/155% 'Open Sans', sans-serif;
+	color: #333;
+	margin: 0 0 30px;
+}
+#Blog .each-icon {
+	background-color: rgb(224,248,208);
+	min-height: 450px;
+	text-align: center;	
+	cursor: pointer;
+	position: relative;
+}
+#Blog .each-icon .icon-wrap {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+#Blog .each-icon .icon-wrap i {
+	color: rgb(52,104,86);
+	font-size: 100px;
+}
+#Blog .each-icon .icon-wrap h3 {
+	color: rgb(52,104,86);
+	padding-top: 15px;
+	margin: 0 0 15px;
+	font: 700 20px/115% 'Open Sans', sans-serif;
+}
+#Blog .each-icon .icon-wrap p {
+	color: rgb(52,104,86);
+	margin: 0 0 15px;
+	font: 400 18px/115% 'Open Sans', sans-serif;
+}
+#Blog .each-icon .icon-text {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	padding: 10px 20px;
+	text-align: left;
+	transition: all 0.5s;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+#Blog .each-icon .icon-text h3 {
+	color: rgb(52,104,86);
+	margin: 0 0 15px;
+	font: 700 20px/115% 'Open Sans', sans-serif;
+}
+#Blog .each-icon .icon-text p {
+	color: rgb(52,104,86);
+	margin: 0 0 15px;
+	font: 400 18px/115% 'Open Sans', sans-serif;
+}
+#Blog .each-icon .icon-text .cta a {
+	color: rgb(52,104,86);
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	top: 0%;
+}
+#Blog .each-icon .icon-text .cta i {
+	color: rgb(52,104,86);
+	font-size: 25px;
+	position: relative;
+	left: 0%;
+	top: 24%;
+	transition: all 0.3s;
+}
+#Blog .each-icon:hover .icon-text .cta a i {
+	opacity: 1;
+	left: 0;
+	transition: all 0.3s;
+}
+#Blog .each-icon .icon-text .cta a:hover i {
+	color: #006f65;
+}
+#Blog .each-icon:hover .icon-wrap {
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s;
+}
+#Blog .each-icon:hover .icon-text {
 	visibility: visible;
 	opacity: 1;
 	transition: all 0.5s;

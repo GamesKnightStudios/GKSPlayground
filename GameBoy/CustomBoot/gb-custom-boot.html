@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GB Custom Boot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=“X-UA-Compatible” content=“IE=edge”>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/custom-responsive-style.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/all-plugins.js"></script>
+    <script type="text/javascript" src="../../js/plugin-active.js"></script>
+</head>
+
+<body>
+    <header id="Header">
+        <nav class="main-navigation">
+            <div class="container">
+            <div class="row">
+                <div class="col">
+                <div class="logo">
+                    <!--<a href="#"><img src="images/logo.png" alt="Logo"></a>-->
+                    <h1 id="logo-text"><a href="../../index.html">Games Knight Studios</a></h1>
+                </div>
+                </div>
+                <div class="col text-right">
+                <div class="menu-wrap">
+                    <div id="nav-icon1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+            <li><a href="../../index.html" class="smooth-scroll">Home</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id="Games">
+        <div class="container">
+            <h2>GameBoy Custom Boot Logo's</h2>
+            <h5>Published: Not yet published</h5>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">What are we doing?</h3>
+            <p>
+                We all know and love the sweet 'ding' sound of the GameBoy as the nintendo logo flies in from the
+                top of the screen or the colorful wiggle of the GameBoy color. But even this isn't sacred to us hackers.<br>
+                Today we are talking about editing the boot screen of the GameBoy to make it say anything you like! Well.. kinda?<br>
+                This project was inspired by <a href="https://blog.dodslaser.se/Almost-Booting-the-Gameboy-with-a-Custom-Logo/" target="_blank">dodslaser's blog post</a>.<br>
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Cartridge headers</h3>
+            <p>
+                Explain about how the cartridge header affects the boot logo. (Double check for logo).
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Decoding the header</h3>
+            <p>
+                Explain to decode the header information. 
+            </p>
+            
+            Download here <a href="bootlogodecode.py" download>bootlogodecode.py</a>
+            <pre>
+                <code>
+from itertools import chain
+from PIL import Image
+
+bytes_raw = bytes.fromhex(
+    'ce ed 66 66 cc 0d 00 0b 03 73 00 83' \
+    '00 0c 00 0d 00 08 11 1f 88 89 00 0e' \
+    'dc cc 6e e6 dd dd d9 99 bb bb 67 63' \
+    '6e 0e ec cc dd dc 99 9f bb b9 33 3e'
+    )
+
+# Split bytes into separate bytes for upper and lower nibbles
+logo_nibs = b''.join(
+    bytes([b >> 4, b & 15]) for b in bytes_raw
+    )
+
+# The mapping can be generated as a chain of ranges
+mapping = chain.from_iterable(
+        range(x+y, 48+y, 4) for y in (0, 48) for x in range(4)
+    )
+
+# Sort the nibbles according to the mapping
+sorted_nibs = [logo_nibs[x] for x in mapping]
+
+# Recombine the nibbles into a 48-byte string
+logo_out = bytes(
+    (sorted_nibs[n] << 4) | sorted_nibs[n+1] for n in range(0, 96, 2)
+    )
+
+Image.frombytes('1', (48, 8), logo_out).save('logo.bmp')
+                </code>
+            </pre>
+
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Encoding the header</h3>
+            <p>
+                Explain hot to encode the header information.
+            </p>
+            
+            Download here <a href="bootlogoencode.py" download>bootlogoencode.py</a>
+            <pre>
+                <code>
+from itertools import chain
+from PIL import Image
+
+logo_raw = Image.open('mylogo.bmp').tobytes()
+
+logo_nibbs = b''.join(
+    bytes([b >> 4, b & 15]) for b in logo_raw
+    )
+
+mapping = chain.from_iterable(
+    range(x+y, 48+y, 4) for y in (0, 48) for x in range(4)
+    )
+
+# The mapping has to be converted to a list since a chain doesn't have an index
+mapping = list(mapping)
+
+# The sorting is reversed by looking at the index of each nibble in the mapping
+sorted_nibbs = [logo_nibbs[mapping.index(x)] for x in range(96)]
+
+logo_bytes = bytes(
+    (sorted_nibbs[n] << 4) | sorted_nibbs[n+1] for n in range(0, 96, 2)
+    )
+
+# The logo bytes are padded with zeroes to fill out the header
+bytes_out = b'\x00'*260 + logo_bytes + b'\x00'*28
+
+with open('mylogo.gb', 'wb') as f:
+    f.write(bytes_out)
+                </code>
+            </pre>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">It only kinda works...</h3>
+            <p>
+                Explain that you can't actually boot a game after this as the security check still fails. 
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Samples</h3>
+            <p>
+                Here are a couple of samples of boot logos we generated:<br>
+                <img src="sega.gif" alt="SEGA logo replacing nintendo logo on GameBoy boot screen" style="width:20%;height:20%">
+                <img src="gks.gif" alt="GameKnightStudios logo replacing nintendo logo on GameBoy boot screen" style="width:20%;height:20%">
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Source code</h3>
+            <p>
+                All the code mentioned in this project is available on <a href="https://github.com/GamesKnightStudios/GBCustomBoot" target="_blank">GitHub</a> or downloadable below:<br>
+                Decode the boot logo <a href="bootlogodecode.py" download>bootlogodecode.py</a><br/>
+                Encode a boot logo <a href="bootlogoencode.py" download>bootlogoencode.py</a><br/>
+            </p>
+        </div>
+    </section>
+    <!-- Footer section starts here -->
+    <footer id="Footer">
+        <div class="container text-center">
+            <div class="footer-text ">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="copy-right">
+                    <p>© Games Knight Studios 2020 | Last update: 23:00 30/08/2020</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <!-- Footer section ends here -->
+</body>
+
+</html>
