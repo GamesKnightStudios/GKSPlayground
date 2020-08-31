@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GB Custom Boot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=“X-UA-Compatible” content=“IE=edge”>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/custom-responsive-style.css">
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/all-plugins.js"></script>
+    <script type="text/javascript" src="../../js/plugin-active.js"></script>
+</head>
+
+<body>
+    <header id="Header">
+        <nav class="main-navigation">
+            <div class="container">
+            <div class="row">
+                <div class="col">
+                <div class="logo">
+                    <!--<a href="#"><img src="images/logo.png" alt="Logo"></a>-->
+                    <h1 id="logo-text"><a href="../../index.html">Games Knight Studios</a></h1>
+                </div>
+                </div>
+                <div class="col text-right">
+                <div class="menu-wrap">
+                    <div id="nav-icon1">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+            <li><a href="../../index.html" class="smooth-scroll">Home</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id="Games">
+        <div class="container">
+            <h2>How to make GameBoy Music</h2>
+            <h5>Published: 31/08/2020</h5>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">What are we doing?</h3>
+            <p>
+                Music makes all the difference when it comes to a full gaming experience.<br>
+                Today we are going to be making music for the GameBoy using a useful software named OpenMPT and a couple of conversion tools.<br>
+                This project was inspired by <a href="https://www.youtube.com/watch?v=7l93RP986Zo" target="_blank">GamingMonsters video</a>.<br>
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Required</h3>
+            <p>
+                OpenMPT (Recommended v1.29) <a href="https://openmpt.org/download">download</a><br>
+                Project source code <a href="https://github.com/GamesKnightStudios/GBMusic/archive/v0.0.1.zip">download</a>
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Setup OpenMPT</h3>
+            <p>OpenMPT is a tool for writing music that is designed for MIDI manipulation. Along with a useful tool from AntonioND
+                <a href="(https://github.com/AntonioND/gbt-player">gbt-player</a> this can be used to create the files needed to
+                design GameBoy music for your game.<br>Unfortunately the latest version of gbt-player no longer supports gbdk but
+                thankfully a working version of the required files can be found <a
+                    href="https://github.com/gingemonster/GamingMonstersGameBoySampleCode/tree/master/19_making_music">here</a>
+                (Included in this projects source code in the &#39;gbp-player&#39; folder).<br>To make music that will be compatible with the
+                GameBoy you need to use the template file that is provided in this projects source code (gbt-player/template.mod). This has
+                samples that aproximate the sounds the gameboy can make so you can play back your music and estimate what it will
+                sound like on the GameBoy.<br>Download OpenMPT and open the &#39;template.mod&#39; file. To make sure you don&#39;t
+                overwrite and loose this file I recommend saving a copy for you to work on by going to File-&gt;Save as and choosing
+                a location to save the file. Also you may want to name the song which you can do by clicking on the
+                &#39;General&#39; tab and entering a name in the &#39;name&#39; box, but this can be done later. 
+            </p>
+
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Writing music</h3>
+            <p>The two OpenMPT features that we will be using are the Patterns and Sequences. A pattern is a 64 row table split into
+                4 main channels were you place the notes of the track. A sequence is a collection of patterns, for example you could
+                have 3 patterns and play them in the order 0-&gt;1-&gt;2-&gt;3 or 2-&gt;3-&gt;2-&gt;1.<br>The template file contains
+                4 empty patterns in a 0-&gt;1-&gt;2-&gt;3 sequence. The image below explains how the interface is layed out:
+                <img src="labelledinterface.PNG" alt="Labelled OpenMPT interface">
+                Notes can be added to the pattern by clicking in the pattern table and then using your computer keyboard as a
+                musical keyboard. The top row of the keyboard from &#39;Q&#39; to &#39;]&#39; will write notes from C4 to B4. The
+                next row from &#39;A&#39; to &#39;#&#39; will write notes from C5 to B5 and so on. Also these keys can be used to
+                record music live by making sure the record indicator is on and then pressing play. As you play notes these will be
+                added to the pattern. To remove a note, select it with the mouse and press the space bar.<br>To change the
+                instrument you are writing with select it from the drop down list at the top. Make sure to only use the instrument
+                in the correct channels otherwise it will not work on the GameBoy. For example, channel 4 should only use
+                instruments from 16-&gt;32, these are labelled with a &#39;4&#39; in the instrument name.<br>Double click on a note
+                to change it&#39;s data, this will bring up the following dialog:
+                <img src="noteeditdialog.PNG" alt="OpenMPT note edit dialog">
+                Change the note or instrument here and also adjust the effect for this note, most commonly you will want to adjust
+                the volume.<br>To adjust the pattern sequence click and drag them along the sequence boxes. Right click to
+                copy/delete patterns.
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Playback</h3>
+            <p>Playback can be controlled either for the pattern you are writing or for the whole sequence:
+                <img src="labelledplayback.PNG" alt="Labelled OpenMPT playback interface">
+                A useful button to know about is the &#39;Stop hanging note&#39; button, this is needed as sometimes a note will
+                continue to play even when the playback is stopped. 
+            </p>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">GameBoy conversion</h3>
+            <p>Once you have your song written the next step is to convert the &#39;.mod&#39; file that OpenMPT uses into the code
+                which can be used to compile in your Game Boy game. The tools used for this is &#39;mod2gbt&#39; and is provided in
+                the &#39;gbt-player&#39; folder of this projects source code.
+                Use the following command in the terminal to convert the &#39;.mod&#39; file:
+            </p>
+            <pre><code><span class="hljs-selector-tag">mod2gbt</span> <span class="hljs-selector-attr">[FILENAME]</span><span class="hljs-selector-class">.mod</span> <span class="hljs-selector-attr">[SONGNAME]</span> <span class="hljs-selector-tag">-c</span> 2
+            </code></pre>
+            <p>Replace [FILENAME] with your &#39;.mod&#39; filename and [SONGNAME] with the name of the song e.g.:</p>
+            <pre><code>mod2gbt <span class="hljs-keyword">sample</span>.<span class="hljs-built_in">mod</span> sampleSong -c <span class="hljs-number">2</span>
+            </code></pre>
+            <p>This will create a output.c file with the music data stored in an array. To use this file your game needs to be
+                compiled with the gbt_player files &#39;gbt_player.h&#39;, &#39;gbt_player.s&#39;, and &#39;gbt_player_bank1.s&#39;
+                provided in this projects source code in the &#39;gbt-player&#39; folder. The &#39;.s&#39; files are assembly files which hold
+                the code to be able to playback music. I won&#39;t go into detail here about compiling GameBoy files, but note that
+                you will need to compile these into &#39;.obj&#39; files and then compile your game. For example:</p>
+            <pre><code>lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o main<span class="hljs-selector-class">.o</span> main<span class="hljs-selector-class">.c</span>
+lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o output<span class="hljs-selector-class">.o</span> output<span class="hljs-selector-class">.c</span>
+lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o gbt_player<span class="hljs-selector-class">.o</span> gbt_player<span class="hljs-selector-class">.s</span>
+lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -c -o gbt_player_bank1<span class="hljs-selector-class">.o</span> gbt_player_bank1<span class="hljs-selector-class">.s</span>
+
+lcc -Wa-l -Wl-m -Wl-j -DUSE_SFR_FOR_REG -Wl-yt1 -Wl-yo4 -Wl-ya0 -o music<span class="hljs-selector-class">.gb</span> main<span class="hljs-selector-class">.o</span> output<span class="hljs-selector-class">.o</span> gbt_player<span class="hljs-selector-class">.o</span> gbt_player_bank1.o
+            </code></pre>
+        </div>
+    </section>
+    <section id="Blog">
+        <div class="container">
+            <h3 id="section-header">Source code</h3>
+            <p>
+                All the code mentioned in this project is available on <a href="https://github.com/GamesKnightStudios/GBMusic" target="_blank">GitHub</a><br>
+                <p>See <a href="https://github.com/GamesKnightStudios/GBJam8">GBJam8</a> for a game that uses this for it&#39;s music.</p>
+            </p>
+        </div>
+    </section>
+    <!-- Footer section starts here -->
+    <footer id="Footer">
+        <div class="container text-center">
+            <div class="footer-text ">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="copy-right">
+                    <p>© Games Knight Studios 2020 | Last update: 12:30 31/08/2020</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <!-- Footer section ends here -->
+</body>
+
+</html>
